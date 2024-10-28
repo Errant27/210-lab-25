@@ -53,11 +53,28 @@ int main() {
     auto endSetRead = std::chrono::high_resolution_clock::now();
     auto durationSetREAD = duration_cast<std::chrono::milliseconds>(endSetRead - startSetRead);
     
-// OUTPUT TIMES
+// SORTING //
+    // Vector timer
+    auto startVecSORT = std::chrono::high_resolution_clock::now();
+    sort(veec.begin(), veec.end());
+    auto endVecSORT = std::chrono::high_resolution_clock::now();
+    auto durationVecSORT = duration_cast<std::chrono::milliseconds>(endVecSORT - startVecSORT);
+
+    // List timer
+    auto startListSORT = std::chrono::high_resolution_clock::now();
+    liis.sort();
+    auto endListSORT = std::chrono::high_resolution_clock::now();
+    auto durationListSORT = duration_cast<std::chrono::milliseconds>(endListSORT - startListSORT);
+    
+// OUTPUT TIMES //
     cout << setw(W1) << "Type:" << setw(W1) << "Vector" << setw(W1) << "List" << setw(W1) << "Set" << endl;
 
     cout << setw(W1) << "Reading:" << setw(W1) << durationVecREAD.count() << setw(W1) << durationListREAD.count();
     cout << setw(W1) << durationSetREAD.count() << endl;
+
+    cout << setw(W1) << "Sorting:"  << setw(W1) << durationVecSORT.count() << setw(W1) << durationListSORT.count();
+    cout << setw(W1) << -1 << endl;
+
 
     return 0;
 }
