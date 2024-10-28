@@ -66,6 +66,33 @@ int main() {
     auto endListSORT = std::chrono::high_resolution_clock::now();
     auto durationListSORT = duration_cast<std::chrono::milliseconds>(endListSORT - startListSORT);
     
+// INSERTING //
+    // Vector timer
+    auto startVecINSERT = std::chrono::high_resolution_clock::now();
+    veec.insert(veec.begin() + veec.size()/2, "TESTCODE");
+    auto endVecINSERT = std::chrono::high_resolution_clock::now();
+    auto durationVecINSERT = duration_cast<std::chrono::milliseconds>(endVecINSERT - startVecINSERT);
+        
+    // List timer
+    auto startListINSERT = std::chrono::high_resolution_clock::now();
+    list<string>::iterator lisIT;
+    lisIT = liis.begin();
+    for (int i = 0; i < liis.size()/2; i++)
+        lisIT++;
+    liis.insert(lisIT, "TESTCODE");
+    auto endListINSERT = std::chrono::high_resolution_clock::now();
+    auto durationListINSERT = duration_cast<std::chrono::milliseconds>(endListINSERT - startListINSERT);
+
+    // Set timer
+    auto startSetINSERT = std::chrono::high_resolution_clock::now();
+    set<string>::iterator setIT;
+    setIT = seet.begin();
+    for (int i = 0; i < seet.size()/2; i++)
+        setIT++;
+    seet.insert(setIT, "TESTCODE");
+    auto endSetINSERT = std::chrono::high_resolution_clock::now();
+    auto durationSetINSERT = duration_cast<std::chrono::milliseconds>(endSetINSERT - startSetINSERT);
+    
 // OUTPUT TIMES //
     cout << setw(W1) << "Type:" << setw(W1) << "Vector" << setw(W1) << "List" << setw(W1) << "Set" << endl;
 
@@ -74,6 +101,9 @@ int main() {
 
     cout << setw(W1) << "Sorting:"  << setw(W1) << durationVecSORT.count() << setw(W1) << durationListSORT.count();
     cout << setw(W1) << -1 << endl;
+    
+    cout << setw(W1) << "Inserting:" << setw(W1) << durationVecINSERT.count() << setw(W1) << durationListINSERT.count();
+    cout << setw(W1) << durationSetINSERT.count() << endl;
 
 
     return 0;
