@@ -93,6 +93,31 @@ int main() {
     auto endSetINSERT = std::chrono::high_resolution_clock::now();
     auto durationSetINSERT = duration_cast<std::chrono::milliseconds>(endSetINSERT - startSetINSERT);
     
+// DELETING //
+    // Vector timer
+    auto startVecDELETE = std::chrono::high_resolution_clock::now();
+    veec.erase(veec.begin() + veec.size()/2);
+    auto endVecDELETE = std::chrono::high_resolution_clock::now();
+    auto durationVecDELETE = duration_cast<std::chrono::milliseconds>(endVecDELETE - startVecDELETE);
+        
+    // List timer
+    auto startListDELETE = std::chrono::high_resolution_clock::now();
+    lisIT = liis.begin();
+    for (int i = 0; i < liis.size()/2; i++)
+        lisIT++;
+    liis.erase(lisIT);
+    auto endListDELETE = std::chrono::high_resolution_clock::now();
+    auto durationListDELETE = duration_cast<std::chrono::milliseconds>(endListDELETE - startListDELETE);
+        
+    // Set timer
+    auto startSetDELETE = std::chrono::high_resolution_clock::now();
+    setIT = seet.begin();
+    for (int i = 0; i < seet.size()/2; i++)
+        setIT++;
+    seet.erase(setIT);
+    auto endSetDELETE = std::chrono::high_resolution_clock::now();
+    auto durationSetDELETE = duration_cast<std::chrono::milliseconds>(endSetDELETE- startSetDELETE);
+    
 // OUTPUT TIMES //
     cout << setw(W1) << "Type:" << setw(W1) << "Vector" << setw(W1) << "List" << setw(W1) << "Set" << endl;
 
@@ -104,6 +129,9 @@ int main() {
     
     cout << setw(W1) << "Inserting:" << setw(W1) << durationVecINSERT.count() << setw(W1) << durationListINSERT.count();
     cout << setw(W1) << durationSetINSERT.count() << endl;
+    
+    cout << setw(W1) << "Deleting:" << setw(W1) << durationVecDELETE.count() << setw(W1) << durationListDELETE.count();
+    cout << setw(W1) << durationSetDELETE.count() << endl;
 
 
     return 0;
